@@ -10,8 +10,11 @@ const serverlessConfiguration: AWS = {
       webpackConfig: './webpack.config.js',
       includeModules: true,
     },
+    localstack: {
+      stages: ['local']
+    }
   },
-  plugins: ['serverless-webpack'],
+  plugins: ['serverless-webpack', 'serverless-localstack'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',

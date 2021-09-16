@@ -10,11 +10,6 @@ Depending on your preferred package manager, follow the instructions below to de
 
 > **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If you're using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime.
 
-### Using NPM
-
-- Run `npm i` to install the project dependencies
-- Run `npx sls deploy` to deploy this stack to AWS
-
 ### Using Yarn
 
 - Run `yarn` to install the project dependencies
@@ -32,12 +27,28 @@ This template contains a single lambda function triggered by an HTTP request mad
 
 ### Locally
 
-In order to test the hello function locally, run the following command:
+[Localstack](https://github.com/localstack/localstack) is used for running this project locally.
 
-- `npx sls invoke local -f hello --path src/functions/hello/mock.json` if you're using NPM
-- `yarn sls invoke local -f hello --path src/functions/hello/mock.json` if you're using Yarn
+First, start localstack using docker-compose
 
-Check the [sls invoke local command documentation](https://www.serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) for more information.
+```
+docker-compose up
+```
+
+Then, start the project
+
+```
+yarn start
+```
+
+The local endpoint will be printed out in the Serverless output. Look for something like this:
+
+```
+endpoints:
+  http://localhost:4566/restapis/7qilhlnkik/local/_user_request_
+```
+
+You can now make requests against the local instance by appending the path to the endpoints url, for example: `http://localhost:4566/restapis/7qilhlnkik/local/_user_request_/hello`
 
 ### Remotely
 
@@ -93,4 +104,4 @@ The project code base is mainly located within the `src` folder. This folder is 
 ### Advanced usage
 
 Any tsconfig.json can be used, but if you do, set the environment variable `TS_NODE_CONFIG` for building the application, eg `TS_NODE_CONFIG=./tsconfig.app.json npx serverless webpack`
-# hello-serverless-aws-nodejs-typescript
+
