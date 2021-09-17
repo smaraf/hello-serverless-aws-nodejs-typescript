@@ -14,7 +14,7 @@ const serverlessConfiguration: AWS = {
       stages: ['local']
     }
   },
-  plugins: ['serverless-webpack', 'serverless-localstack'],
+  plugins: ['serverless-webpack', 'serverless-localstack', 'serverless-offline'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',

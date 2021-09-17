@@ -27,6 +27,13 @@ This template contains a single lambda function triggered by an HTTP request mad
 
 ### Locally
 
+### VS Code Debug with serverless-offline
+
+```yarn watch```
+
+Run the Debug Serverless configuration in VS Code (F5)
+### With LocalStack
+
 [Localstack](https://github.com/localstack/localstack) is used for running this project locally.
 
 First, start localstack using docker-compose
